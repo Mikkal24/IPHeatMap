@@ -96,25 +96,13 @@
 				<br>
 				<blockquote>
 				(Example)<br>
-				67.207.81.87  <br>
-				148.101.120.62 <br>
-				148.0.7.185 <br>
-				179.53.165.121 <br>
-				190.167.229.238 <br>
-				148.255.179.98 <br>
-				179.52.61.235 <br>
-				179.53.58.195 <br>
-				148.101.110.232 <br>
-				179.52.50.199 <br>
-				190.166.120.143 <br>
-				148.255.91.112 <br>
-				179.52.232.95 <br>
-				148.101.50.234 <br>
-				148.255.155.113 <br>
-				148.255.83.5 <br>
-				148.255.191.53 <br>
-				148.101.85.30 <br>
-				10.74.142.85 <br>
+				1 <1 ms <1 ms <1 ms 10.1.0.1<br>
+				2 35 ms 19 ms 29 ms 98.245.140.1<br>
+				3 11 ms 27 ms 9 ms te-0-3.dnv.comcast.net [68.85.105.201]<br>
+				...<br>
+				13 81 ms 76 ms 75 ms 209.85.241.37<br>
+				14 84 ms 91 ms 87 ms 209.85.248.102<br>
+				15 76 ms 112 ms 76 ms iy-f104.1e100.net [209.85.225.104]<br>
 				</blockquote>
 				<br>
 				Step 2. Paste List of IPs<br>
@@ -221,47 +209,47 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 2,
           center: (locArray[0]) ? locArray[0] : {lat: 0, lng: -180},
-          mapTypeId: 'hybrid'
+          mapTypeId: 'terrain'
         });
-        generateHeatMap(locArray);
-        function generateHeatMap(locationArray){
-        	var heatmapData = [];
-        	for(var i = 0; i<locationArray.length; i++){
-        		var latLng = new google.maps.LatLng(locationArray[i])
-        		heatmapData.push(latLng);
-        	}
-        	var heatmap = new google.maps.visualization.HeatmapLayer({
-	         	data: heatmapData,
-	         	radius: 5,
-	         	dissipating: true,
-	         	dissipating: false,
-	         	map: map
-	        });
-	        console.log(heatmap);
-        }
+        // generateHeatMap(locArray);
+        // function generateHeatMap(locationArray){
+        // 	var heatmapData = [];
+        // 	for(var i = 0; i<locationArray.length; i++){
+        // 		var latLng = new google.maps.LatLng(locationArray[i])
+        // 		heatmapData.push(latLng);
+        // 	}
+        // 	var heatmap = new google.maps.visualization.HeatmapLayer({
+	      //    	data: heatmapData,
+	      //    	radius: 5,
+	      //    	dissipating: true,
+	      //    	dissipating: false,
+	      //    	map: map
+	      //   });
+	      //   console.log(heatmap);
+        // }
 
         
        	//clearMarkers();
-        // var flightPlanCoordinates = locArray;
-        // placeMarkers(flightPlanCoordinates);
-        // var flightPath = new google.maps.Polyline({
-        //   path: flightPlanCoordinates,
-        //   geodesic: true,
-        //   strokeColor: '#FF0000',
-        //   strokeOpacity: 1.0,
-        //   strokeWeight: 2
-        // });
+        var flightPlanCoordinates = locArray;
+        placeMarkers(flightPlanCoordinates);
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
         
-        // function placeMarkers(locationArr){
-        // 	for (var i = 0;i<locationArr.length;i++){
-        // 		var marker = new google.maps.Marker({
-        // 			position: locationArr[i],
-        // 			label: (i+1).toString(),
-        // 			map: map
-        // 		})
-        // 	}
-        // }
-        // flightPath.setMap(map);
+        function placeMarkers(locationArr){
+        	for (var i = 0;i<locationArr.length;i++){
+        		var marker = new google.maps.Marker({
+        			position: locationArr[i],
+        			label: (i+1).toString(),
+        			map: map
+        		})
+        	}
+        }
+        flightPath.setMap(map);
       }
     </script>
 	<script async defer
