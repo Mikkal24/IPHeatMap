@@ -223,45 +223,45 @@
           center: (locArray[0]) ? locArray[0] : {lat: 0, lng: -180},
           mapTypeId: 'hybrid'
         });
-        generateHeatMap(locArray);
-        function generateHeatMap(locationArray){
-        	var heatmapData = [];
-        	for(var i = 0; i<locationArray.length; i++){
-        		var latLng = new google.maps.LatLng(locationArray[i])
-        		heatmapData.push(latLng);
-        	}
-        	var heatmap = new google.maps.visualization.HeatmapLayer({
-	         	data: heatmapData,
-	         	radius: 5,
-	         	dissipating: true,
-	         	dissipating: false,
-	         	map: map
-	        });
-	        console.log(heatmap);
-        }
+//         generateHeatMap(locArray);
+//         function generateHeatMap(locationArray){
+//         	var heatmapData = [];
+//         	for(var i = 0; i<locationArray.length; i++){
+//         		var latLng = new google.maps.LatLng(locationArray[i])
+//         		heatmapData.push(latLng);
+//         	}
+//         	var heatmap = new google.maps.visualization.HeatmapLayer({
+// 	         	data: heatmapData,
+// 	         	radius: 5,
+// 	         	dissipating: true,
+// 	         	dissipating: false,
+// 	         	map: map
+// 	        });
+// 	        console.log(heatmap);
+//         }
 
         
-       	//clearMarkers();
-        // var flightPlanCoordinates = locArray;
-        // placeMarkers(flightPlanCoordinates);
-        // var flightPath = new google.maps.Polyline({
-        //   path: flightPlanCoordinates,
-        //   geodesic: true,
-        //   strokeColor: '#FF0000',
-        //   strokeOpacity: 1.0,
-        //   strokeWeight: 2
-        // });
+       	clearMarkers();
+        var flightPlanCoordinates = locArray;
+        placeMarkers(flightPlanCoordinates);
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
         
-        // function placeMarkers(locationArr){
-        // 	for (var i = 0;i<locationArr.length;i++){
-        // 		var marker = new google.maps.Marker({
-        // 			position: locationArr[i],
-        // 			label: (i+1).toString(),
-        // 			map: map
-        // 		})
-        // 	}
-        // }
-        // flightPath.setMap(map);
+        function placeMarkers(locationArr){
+        	for (var i = 0;i<locationArr.length;i++){
+        		var marker = new google.maps.Marker({
+        			position: locationArr[i],
+        			label: (i+1).toString(),
+        			map: map
+        		})
+        	}
+        }
+        flightPath.setMap(map);
       }
     </script>
 	<script async defer
